@@ -2,8 +2,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 100px;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            color: #666;
+        }
+
+        .edit-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-link:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome home, <span th:text="${username}"></span>!</h1>
+<div class="container">
+    <h1>Welcome home, <span th:text="${username}"></span>!</h1>
+    <h2>Do you want to create new nodes? Click the link below!</h2>
+    <div>
+        <a th:href="@{/note/list}" class="edit-link">Create Node</a>
+    </div>
+</div>
 </body>
 </html>
