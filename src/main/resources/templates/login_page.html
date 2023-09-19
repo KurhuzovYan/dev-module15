@@ -60,6 +60,9 @@
 <body>
 <div class="container">
     <h2 class="form-signin-heading">Login</h2>
+    <div th:if="${session.errorMessage}" class="alert alert-danger" role="alert">
+        <p th:text="${session.errorMessage}"></p>
+    </div>
     <form th:action="@{/login}" method="post">
         <div class="form-group">
             <label for="username">User Name:</label>

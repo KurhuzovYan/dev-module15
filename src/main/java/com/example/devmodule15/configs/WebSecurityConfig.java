@@ -24,6 +24,7 @@ import javax.sql.DataSource;
 public class WebSecurityConfig {
 
     private final DataSource dataSource;
+    private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -35,7 +36,8 @@ public class WebSecurityConfig {
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .permitAll())
+                        .permitAll()
+                        .failureHandler(customAuthenticationFailureHandler))
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable).disable())
                 .logout(LogoutConfigurer::permitAll)
                 .build();
